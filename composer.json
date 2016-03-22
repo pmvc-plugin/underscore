@@ -1,0 +1,17 @@
+{
+    "name": "pmvc-plugin/underscore",
+    "description": "Convert array or camel case to underscore, or underscore to others.",
+    "type": "library",
+    "keywords": ["underscore", "array", "camelCase", "pmvc", "plug-in"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hill",
+            "email": "hill@kimo.com"
+        }
+    ],
+    "require": {
+        "pmvc/pmvc": "*"
+    },
+    "minimum-stability": "dev"
+}
