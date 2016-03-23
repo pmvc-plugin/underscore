@@ -20,7 +20,7 @@ class UnderscoreTest extends PHPUnit_Framework_TestCase
             'AAA_BBB_CCC'=>'ddd'
         ]; 
         $plug = \PMVC\plug($this->_plug);
-        $actual = $plug->array()->toArray($underscore);
+        $actual = $plug->underscore()->toArray($underscore);
         $expected = [
             'AAA'=>[
                 'BBB'=>[
