@@ -24,7 +24,7 @@ class FromUnderscore
             }   
             $str.='='.$v;
             parse_str($str,$new1);
-            $new = array_merge_recursive($new,$new1);
+            $new = array_replace_recursive($new,$new1);
         }
         return $new;
     }
