@@ -9,7 +9,6 @@ class ArrayConvert
         return $this;
     }
 
-
     function toUnderscore($array, $key='')
     {
         $new = [];
@@ -19,6 +18,25 @@ class ArrayConvert
                $new = array_merge_recursive($new,$flatten);
             } else {
                $new [$key.$k] = $v;
+            }
+        }
+        return $new;
+    }
+
+    function toQuery($array, $key='')
+    {
+        $new = [];
+        foreach($array as $k=>$v) {
+            if ($key) {
+                $tpl = $key.'['.$k.']';
+            } else {
+                $tpl = $k;
+            }
+            if (is_array($v)) {
+               $flatten = $this->toQuery($v, $tpl);  
+               $new = array_merge_recursive($new,$flatten);
+            } else {
+               $new [$tpl] = $v;
             }
         }
         return $new;
