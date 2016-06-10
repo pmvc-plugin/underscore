@@ -9,14 +9,14 @@ class FromUnderscore
         return $this;
     }
 
-    function toArray($underscore)
+    function toArray($underscore, $escape = null)
     {
         $new = [];
         foreach($underscore as $k=>$v) {
             if (is_array($v)) {
                 $new1 = $this->multiValueToArray($k,$v);
             } else {
-                $new1 = $this->keyValueToArray($k,$v);
+                $new1 = $this->keyValueToArray($k,$v,$escape);
             }
             $new = array_replace_recursive($new,$new1);
         }
@@ -33,8 +33,12 @@ class FromUnderscore
         return $new;
     }
 
-    function keyValueToArray($k,$v)
+    function keyValueToArray($k,$v,$escape)
     {
+        if (!is_null($escape) && 0===strpos($k,$escape)) {
+            $k = substr($k, strlen($escape));
+            return [$k=>$v];
+        }
         $keys = explode('_',$k);
         $str = ''; 
         foreach($keys as $k1) {
