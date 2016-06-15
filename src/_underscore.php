@@ -43,7 +43,11 @@ class FromUnderscore
         $str = ''; 
         foreach($keys as $k1) {
            if (empty($str)) {
-               $str = $k1;
+               if (strlen($k1)) {
+                  $str = $k1;
+               } else {
+                  $str = '_';
+               }
            }else{
                $str .= '['.$k1.']'; 
            }   
