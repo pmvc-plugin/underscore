@@ -14,7 +14,7 @@ class ArrayConvert
         $new = [];
         foreach($array as $k=>$v) {
             if (is_array($v)) {
-               $flatten = $this->toUnderscore($v, $key.$k.'_');  
+               $flatten = $this->toUnderscore($v, $key.$k.'_');
                $new = array_merge_recursive($new,$flatten);
             } else {
                $new [$key.$k] = $v;
