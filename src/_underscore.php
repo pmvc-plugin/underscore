@@ -45,13 +45,14 @@ class FromUnderscore
            if (!strlen($k1)) {
                $k1 = '_';
            }
+           $k1 = urlencode($k1);
            if (empty($str)) {
                $str = $k1;
            }else{
                $str .= '['.$k1.']'; 
            }   
         }   
-        $str.='='.$v;
+        $str.='='.urlencode($v);
         parse_str($str,$new);
         return $new;
     }
