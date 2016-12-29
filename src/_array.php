@@ -27,7 +27,7 @@ class ArrayConvert
     {
         $new = [];
         foreach($array as $k=>$v) {
-            if ($key) {
+            if (strlen($key)) {
                 $tpl = $key.'['.$k.']';
             } else {
                 $tpl = $k;
