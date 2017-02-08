@@ -1,5 +1,7 @@
 <?php
+
 namespace PMVC\PlugIn\underscore;
+
 ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\ArrayConvert';
 
 class ArrayConvert 

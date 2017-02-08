@@ -8,6 +8,7 @@ class ArrayTest extends PHPUnit_Framework_TestCase
 {
 
     private $_plug = 'underscore';
+
     function testArrayToUnderscore()
     {
         $array = [

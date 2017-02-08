@@ -54,44 +54,6 @@ class UnderscoreTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected,$actual);
     }
 
-
-    function testQueryToArray()
-    {
-        $querys = [
-            'AAA[BBB][CCC]' => 'ddd',
-            'AAA[BBB][EEE]' => 'fff',
-            'AAA[GGG]' => 'hhh'
-        ]; 
-        $plug = \PMVC\plug($this->_plug);
-        $actual = $plug->query()->toArray($querys);
-        $expected = [
-            'AAA'=>[
-                'BBB'=>[
-                    'CCC'=>'ddd',
-                    'EEE'=>'fff'
-                ],
-                'GGG'=>'hhh'
-            ]
-        ];
-        $this->assertEquals($expected,$actual);
-    }
-
-    function testParsePointQuery()
-    {
-        $p = PMVC\plug($this->_plug);
-        $o = $p->query()->parse_str('xxx.yyy=zzz&aaa_bbb=ccc');
-        $this->assertEquals('zzz',$o['xxx.yyy']);
-        $this->assertEquals('ccc',$o['aaa_bbb']);
-    }
-
-    function testSetSpaceQuery()
-    {
-        $p = PMVC\plug($this->_plug);
-        $o = $p->query()->parse_str('xxx%20yyy=zzz&aaa bbb=ccc');
-        $this->assertEquals('zzz',$o['xxx_yyy']);
-        $this->assertEquals('ccc',$o['aaa_bbb']);
-    }
-
     function testCamelCaseToArray()
     {
         $s = 'AaaBbbCcc';
