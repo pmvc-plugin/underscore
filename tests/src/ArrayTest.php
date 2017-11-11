@@ -30,6 +30,24 @@ class ArrayTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected,$actual);
     }
 
+    function testArrayToUnderscoreWithUnderscoreKey()
+    {
+        $array = [
+            '_'=>[
+                'aaa'=> [ 'bbb' => 'ccc' ],
+                '_'=>['foo'=>'bar']
+            ],
+        ];
+        $plug = \PMVC\plug($this->_plug);
+        $actual = $plug->array()->toUnderscore($array);
+        $expected = [
+            '_aaa_bbb' => 'ccc',
+            '__foo' => 'bar'
+        ];
+        $this->assertEquals($expected, $actual);
+        $this->assertEquals($array, $plug->underscore()->toarray($actual));
+    }
+
     function testArrayToQuery()
     {
         $array = [
